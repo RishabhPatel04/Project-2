@@ -45,7 +45,7 @@ public class ContinentController {
         List<CountryDto> countries = trackRepository
             .findCountriesByRegion(region)
             .stream()
-            .map(CountryDto::new)
+            .map(v -> new CountryDto(v.getCountry()))
             .toList();
 
         return ResponseEntity.ok(countries);
