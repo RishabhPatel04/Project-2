@@ -12,6 +12,10 @@ public class Track {
 
     private String name;
 
+    private String region;
+
+    private String country;
+
     private String shortName;
 
     private Double lengthKm;
@@ -44,5 +48,13 @@ public class Track {
 
     public Integer getConfigCount() {
         return configCount;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRegion() {
+        return region;
     }
 }
