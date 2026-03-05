@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API_URL from "../../api";
 import "./SignUp.css";
 
 function SignUp() {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ function SignUp() {
             const data = await res.json();
 
             if (res.ok) {
-                window.location.href = "/";
+                navigate("/");
             } else {
                 setError(data.error || "Registration failed");
             }
@@ -119,7 +121,7 @@ function SignUp() {
                     </button>
 
                     <p className="login-text">
-                        Have an account? <span>Log in</span>
+                        Have an account? <span onClick={() => navigate("/")}>Log in</span>
                     </p>
                 </div>
             </div>
