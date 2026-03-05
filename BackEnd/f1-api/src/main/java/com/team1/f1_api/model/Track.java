@@ -9,9 +9,12 @@ import jakarta.persistence.*;
  * Data is sourced from the fastestLaps CSV dataset.
  */
 @Entity
-@Table(name = "tracks", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"name", "layout"})
-})
+@Table(
+    name = "tracks",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "name", "layout" }),
+    }
+)
 public class Track {
 
     @Id
@@ -19,17 +22,9 @@ public class Track {
     private Long trackId;
 
     private String region;
-
-    private String region;
-
     private String country;
-
-    private String shortName;
-
     private String name;
-
     private String layout;
-
     private Double lengthKm;
 
     /** Default no-arg constructor required by JPA. */
@@ -44,7 +39,13 @@ public class Track {
      * @param layout   the track layout/configuration (e.g. "Full Circuit")
      * @param lengthKm the track length in kilometers
      */
-    public Track(String region, String country, String name, String layout, Double lengthKm) {
+    public Track(
+        String region,
+        String country,
+        String name,
+        String layout,
+        Double lengthKm
+    ) {
         this.region = region;
         this.country = country;
         this.name = name;
@@ -80,13 +81,5 @@ public class Track {
     /** @return the track length in kilometers */
     public Double getLengthKm() {
         return lengthKm;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getRegion() {
-        return region;
     }
 }
