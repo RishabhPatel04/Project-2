@@ -20,6 +20,7 @@ function Specs() {
                 return res.json();
             })
             .then((data) => {
+                console.log("Vehicle data:", data); // Debug
                 setVehicle(data);
                 setLoading(false);
             })
@@ -30,8 +31,13 @@ function Specs() {
             });
     }, [vehicleId]);
 
-    if (loading) return <div className="specs-loading">Loading specs...</div>;
-    if (error) return <div className="specs-error">{error}</div>;
+    if (loading) {
+        return <div className="specs-loading">Loading vehicle specs...</div>;
+    }
+
+    if (error) {
+        return <div className="specs-error">{error}</div>;
+    }
 
     return (
         <div className="specs-wrapper">
@@ -53,52 +59,55 @@ function Specs() {
                 </button>
             </div>
 
-            {/* Main Content */}
-            <div className="specs-container">
-                <div className="specs-left">
-                    <h1 className="vehicle-title">{vehicle.name}</h1>
-                    <p className="vehicle-subtitle">
-                        {vehicle.year} • {vehicle.country}
-                    </p>
+            {/* Vehicle Header */}
+            <div className="specs-header">
+                <h1 className="vehicle-title">
+                    {vehicle.name || "Unknown Vehicle"}
+                </h1>
 
-                    <div className="specs-grid">
-                        <div className="spec-item">
-                            <span>Engine Type</span>
-                            <strong>{vehicle.engineType}</strong>
-                        </div>
+                <p className="vehicle-subtitle">
+                    {vehicle.year || "—"} • {vehicle.country || "—"}
+                </p>
+            </div>
 
-                        <div className="spec-item">
-                            <span>Displacement</span>
-                            <strong>{vehicle.displacement}</strong>
-                        </div>
-
-                        <div className="spec-item">
-                            <span>Power</span>
-                            <strong>{vehicle.power}</strong>
-                        </div>
-
-                        <div className="spec-item">
-                            <span>Torque</span>
-                            <strong>{vehicle.torque}</strong>
-                        </div>
-
-                        <div className="spec-item">
-                            <span>Power / Weight</span>
-                            <strong>{vehicle.powerWeight}</strong>
-                        </div>
-                    </div>
+            {/* Specs Grid */}
+            <div className="specs-grid">
+                <div className="spec-item">
+                    <span>Engine Type</span>
+                    <strong>{vehicle.engineType ?? "N/A"}</strong>
                 </div>
 
-                <div className="specs-right">
-                    {vehicle.imageUrl && (
-                        <img
-                            src={vehicle.imageUrl}
-                            alt={vehicle.name}
-                            className="vehicle-image"
-                        />
-                    )}
+                <div className="spec-item">
+                    <span>Displacement</span>
+                    <strong>{vehicle.displacement ?? "N/A"}</strong>
+                </div>
+
+                <div className="spec-item">
+                    <span>Power</span>
+                    <strong>{vehicle.power ?? "N/A"}</strong>
+                </div>
+
+                <div className="spec-item">
+                    <span>Torque</span>
+                    <strong>{vehicle.torque ?? "N/A"}</strong>
+                </div>
+
+                <div className="spec-item">
+                    <span>Power / Weight</span>
+                    <strong>{vehicle.powerWeight ?? "N/A"}</strong>
                 </div>
             </div>
+
+            {/* Optional Image Section */}
+            {vehicle.imageUrl && (
+                <div className="specs-image-container">
+                    <img
+                        src={vehicle.imageUrl}
+                        alt={vehicle.name}
+                        className="vehicle-image"
+                    />
+                </div>
+            )}
         </div>
     );
 }
