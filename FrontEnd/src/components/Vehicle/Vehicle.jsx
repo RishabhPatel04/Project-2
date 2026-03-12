@@ -97,7 +97,7 @@ function Vehicle() {
                         className="vehicle-card"
                         onClick={() =>
                             navigate(
-                                `/continents/${continentName}/${countryName}/${trackId}/vehicle/${lap.vehicle.id}`
+                                `/continents/${continentName}/${countryName}/${trackId}/vehicle/${lap.vehicle.vehicleId}`
                             )
                         }
                         style={{ cursor: "pointer" }}
