@@ -95,6 +95,12 @@ function Vehicle() {
                     <div
                         key={lap.lapId}
                         className="vehicle-card"
+                        onClick={() =>
+                            navigate(
+                                `/continents/${continentName}/${countryName}/${trackId}/vehicle/${lap.vehicle.id}`
+                            )
+                        }
+                        style={{ cursor: "pointer" }}
                     >
                         <div className="vehicle-info">
                             <h3>{lap.vehicle.name}</h3>
