@@ -14,7 +14,7 @@ const flagMap = {
     Japan: japanFlag,
     Singapore: singaporeFlag,
     India: indiaFlag,
-    "United Arab Emirates": uaeFlag,
+    UAE: uaeFlag,
     Bahrain: bahrainFlag,
     Malaysia: malaysiaFlag,
     "Saudi Arabia": saudiFlag
