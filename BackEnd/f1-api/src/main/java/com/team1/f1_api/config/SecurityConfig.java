@@ -53,12 +53,15 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
+                .securityContext(context -> context
+                        .securityContextRepository(new org.springframework.security.web.context.HttpSessionSecurityContextRepository()))
                 .userDetailsService(appUserService)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/tracks/**", "/vehicles/**", "/laps/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/tracks/**", "/vehicles/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/tracks/**", "/vehicles/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/tracks/**", "/vehicles/**").hasAuthority("ADMIN")
+                        .requestMatchers("/users/**").hasAuthority("ADMIN")
                         .requestMatchers("/auth/register", "/auth/login").permitAll()
                         .requestMatchers("/auth/me").authenticated()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
@@ -93,7 +96,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(frontendUrl));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
 
