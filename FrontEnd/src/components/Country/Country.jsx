@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import API_URL from "../../api";
 import "./Country.css";
-import japanFlag from "../../assets/japanFlag.png";
-import singaporeFlag from "../../assets/singaporeFlag.png";
-import indiaFlag from "../../assets/indiaFlag.png";
-import uaeFlag from "../../assets/uaeFlag.png";
-import bahrainFlag from "../../assets/bahrainFlag.png";
-import malaysiaFlag from "../../assets/malaysiaFlag.jpg";
-import saudiFlag from "../../assets/saudiArabiaFlag.png";
+import japanFlag from "../../assets/Flag/japanFlag.png";
+import singaporeFlag from "../../assets/Flag/singaporeFlag.png";
+import indiaFlag from "../../assets/Flag/indiaFlag.png";
+import uaeFlag from "../../assets/Flag/uaeFlag.png";
+import bahrainFlag from "../../assets/Flag/bahrainFlag.png";
+import malaysiaFlag from "../../assets/Flag/malaysiaFlag.jpg";
+import saudiFlag from "../../assets/Flag/saudiArabiaFlag.png";
 
 const flagMap = {
     Japan: japanFlag,

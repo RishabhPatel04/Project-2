@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API_URL from "../../api";
 import "./Track.css";
-import fujiTrack from "../../assets/fujiTrack.png";
-import suzukaTrack from "../../assets/suzukaTrack.png";
-import twinTrack from "../../assets/twinTrack.png";
-import twin2Track from "../../assets/twin2Track.png";
+import fujiTrack from "../../assets/Circuit/fujiTrack.png";
+import suzukaTrack from "../../assets/Circuit/suzukaTrack.png";
+import twinTrack from "../../assets/Circuit/twinTrack.png";
+import twin2Track from "../../assets/Circuit/twin2Track.png";
 
 const trackMap = {
     "Fuji Speedway": fujiTrack,

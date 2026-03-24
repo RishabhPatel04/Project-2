@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API_URL from "../../api";
 import "./Continent.css";
-import NAtrack from "../../assets/NAtrack.jpg";
-import EUtrack from "../../assets/EUtrack.jpg";
-import AFtrack from "../../assets/AFtrack.jpg";
-import SAtrack from "../../assets/SAtrack.jpg";
-import APACtrack from "../../assets/APACtrack.jpg";
-import AUtrack from "../../assets/AUtrack.jpg";
+import NAtrack from "../../assets/ContTrack/NAtrack.jpg";
+import EUtrack from "../../assets/ContTrack/EUtrack.jpg";
+import AFtrack from "../../assets/ContTrack/AFtrack.jpg";
+import SAtrack from "../../assets/ContTrack/SAtrack.jpg";
+import APACtrack from "../../assets/ContTrack/APACtrack.jpg";
+import AUtrack from "../../assets/ContTrack/AUtrack.jpg";
 
 function Continent() {
     const navigate = useNavigate();
