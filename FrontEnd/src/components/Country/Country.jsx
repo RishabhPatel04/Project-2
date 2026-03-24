@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import API_URL from "../../api";
 import "./Country.css";
 import japanFlag from "../../assets/Flag/japanFlag.png";
@@ -69,8 +69,7 @@ function Country() {
                 </div>
 
                 <div className="nav-links">
-                    <span>Saved</span>
-                    <span>Profile</span>
+                    <Link to="/profile">Profile</Link>
                     <button
                         className="logout-btn"
                         onClick={() => navigate("/")}
@@ -82,7 +81,7 @@ function Country() {
 
             {/* header */}
             <div className="header">
-                <header>Choose Your Country</header>
+                <p className="page-label">Choose Your Country</p>
                 <button
                     className="back-btn"
                     onClick={() => navigate("/continents")}
