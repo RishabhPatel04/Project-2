@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import API_URL from "../../api";
 import "./Track.css";
-import fujiTrack from "../../assets/fujiTrack.png";
-import suzukaTrack from "../../assets/suzukaTrack.png";
-import twinTrack from "../../assets/twinTrack.png";
-import twin2Track from "../../assets/twin2Track.png";
+import fujiTrack from "../../assets/Circuit/fujiTrack.png";
+import suzukaTrack from "../../assets/Circuit/suzukaTrack.png";
+import twinTrack from "../../assets/Circuit/twinTrack.png";
 
+// track images
 const trackMap = {
     "Fuji Speedway": fujiTrack,
     "Suzuka": suzukaTrack,
@@ -55,17 +55,16 @@ function Track() {
             {/* navbar */}
             <div className="navbar">
                 <div className="logo-row">
-          <span className="logo">
-            MotoRYX<span className="dot">.</span>
-          </span>
+                    <span className="logo">
+                        MotoRYX<span className="dot">.</span>
+                    </span>
                     <span className="nav-location">
                         {decodeURIComponent(countryName)}
                     </span>
                 </div>
 
                 <div className="nav-links">
-                    <span>Saved</span>
-                    <span>Profile</span>
+                    <Link to="/profile">Profile</Link>
                     <button
                         className="logout-btn"
                         onClick={() => navigate("/")}
@@ -77,7 +76,7 @@ function Track() {
 
             {/* header */}
             <div className="header">
-                <p className="subtitle">Choose Your Track</p>
+                <p className="page-label">Choose Your Track</p>
 
                 <button
                     className="back-btn"

@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API_URL from "../../api";
 import "./Continent.css";
-import NAtrack from "../../assets/NAtrack.jpg";
-import EUtrack from "../../assets/EUtrack.jpg";
-import AFtrack from "../../assets/AFtrack.jpg";
-import SAtrack from "../../assets/SAtrack.jpg";
-import APACtrack from "../../assets/APACtrack.jpg";
-import AUtrack from "../../assets/AUtrack.jpg";
+
+import NAtrack from "../../assets/ContTrack/NAtrack.jpg";
+import EUtrack from "../../assets/ContTrack/EUtrack.jpg";
+import AFtrack from "../../assets/ContTrack/AFtrack.jpg";
+import SAtrack from "../../assets/ContTrack/SAtrack.jpg";
+import APACtrack from "../../assets/ContTrack/APACtrack.jpg";
+import AUtrack from "../../assets/ContTrack/AUtrack.jpg";
+
+// continent images
+const continentImages = {
+    "North America": NAtrack,
+    Europe: EUtrack,
+    Africa: AFtrack,
+    "South America": SAtrack,
+    APAC: APACtrack,
+    Australia: AUtrack,
+    Asia: APACtrack,
+    Oceania: AUtrack,
+};
 
 function Continent() {
     const navigate = useNavigate();
@@ -16,42 +29,32 @@ function Continent() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    // fetch continents
+    // load continents when page opens
     useEffect(() => {
-        async function load() {
+        const loadContinents = async () => {
             try {
-                setLoading(true);
-                setError("");
-
                 const res = await fetch(`${API_URL}/continents`);
-                if (!res.ok) throw new Error(`api error: ${res.status}`);
+
+                if (!res.ok) {
+                    throw new Error(`api error: ${res.status}`);
+                }
 
                 const data = await res.json();
                 setContinents(Array.isArray(data) ? data : []);
+                setError("");
             } catch (e) {
                 setError(e.message || "failed to load continents");
             } finally {
                 setLoading(false);
             }
-        }
+        };
 
-        load();
+        loadContinents();
     }, []);
 
-    // navigate to country page
-    const handleContinentClick = (continentName) => {
-        navigate(`/continents/${encodeURIComponent(continentName)}`);
-    };
-
-    const continentImages = {
-        "North America": NAtrack,
-        Europe: EUtrack,
-        Africa: AFtrack,
-        "South America": SAtrack,
-        APAC: APACtrack,
-        Australia: AUtrack,
-        Asia: APACtrack,
-        Oceania: AUtrack
+    // go to selected continent page
+    const goToContinent = (name) => {
+        navigate(`/continents/${encodeURIComponent(name)}`);
     };
 
     return (
@@ -63,12 +66,8 @@ function Continent() {
                 </div>
 
                 <div className="nav-links">
-                    <span>Saved</span>
-                    <span>Profile</span>
-                    <button
-                        className="logout-btn"
-                        onClick={() => navigate("/")}
-                    >
+                    <Link to="/profile">Profile</Link>
+                    <button className="logout-btn" onClick={() => navigate("/")}>
                         Log Out
                     </button>
                 </div>
@@ -76,27 +75,30 @@ function Continent() {
 
             {/* header */}
             <div className="header">
-                <p className="subtitle">Choose Your Continent</p>
+                <p className="page-label">Choose Your Continent</p>
             </div>
 
-            {/* states */}
+            {/* loading and error messages */}
             {loading && <p>Loading…</p>}
             {error && <p style={{ color: "#f4b400" }}>{error}</p>}
 
-            {/* continent grid */}
+            {/* continent cards */}
             {!loading && !error && (
                 <div className="continent-grid">
-                    {continents.map((c) => (
+                    {continents.map((continent) => (
                         <div
-                            key={c.name}
+                            key={continent.name}
                             className="continent-card"
-                            onClick={() => handleContinentClick(c.name)}
+                            onClick={() => goToContinent(continent.name)}
                         >
-                            <img src={continentImages[c.name]} alt={c.name} />
+                            <img
+                                src={continentImages[continent.name]}
+                                alt={continent.name}
+                            />
 
                             <div className="continent-card-content">
-                                <h3>{c.name}</h3>
-                                <p>{c.countryCount} Countries</p>
+                                <h3>{continent.name}</h3>
+                                <p>{continent.countryCount} Countries</p>
                             </div>
                         </div>
                     ))}

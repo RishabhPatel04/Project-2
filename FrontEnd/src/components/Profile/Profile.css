@@ -1,4 +1,4 @@
-.specs-wrapper {
+.profile-wrapper {
     min-height: 100vh;
     width: 100%;
     background-color: #121212;
@@ -29,19 +29,8 @@
 
 .nav-links {
     display: flex;
-    align-items: center;
     gap: 30px;
-}
-
-.nav-links a {
-    color: #f4b400;
-    text-decoration: none;
-    transition: 0.2s ease;
-}
-
-
-.nav-links a:hover {
-    opacity: 0.8;
+    align-items: center;
 }
 
 .logout-btn {
@@ -75,84 +64,72 @@
 }
 
 /* header */
-.specs-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    margin: 0 0 40px 0;
-}
-
-.specs-label {
-    color: #f4b400;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.specs-title {
-    font-size: 42px;
-    margin: 0;
-}
-
-.lap-time-inline {
-    color: #f4b400;
-    font-size: 34px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.specs-subtitle {
-    color: #f4b400;
-    font-size: 18px;
-    margin-top: 4px;
-}
-
-/* top section */
-.specs-top-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: start;
+.profile-header {
     margin-bottom: 40px;
 }
 
-/* left card */
-.specs-image-card {
+.profile-label {
+    color: #f4b400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.profile-name {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.profile-subtitle {
+    color: #f4b400;
+    font-size: 18px;
+}
+
+/* top section */
+.profile-top-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.profile-image-card {
     background-color: #1a1a1a;
     border-left: 4px solid #f4b400;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-.specs-track-image {
+.profile-about-card {
+    background-color: #1a1a1a;
+    border-left: 4px solid #f4b400;
+    padding: 20px;
+    height: 85%;
+    border-radius: 12px;
+}
+
+.profile-car-image {
     width: 100%;
-    height: auto;
+    border-radius: 12px;
     display: block;
-    border-radius: 8px;
 }
 
-/* right card */
-.specs-info-card {
-    background-color: #1a1a1a;
-    border-left: 4px solid #f4b400;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.specs-info-card h2 {
-    font-size: 24px;
+.profile-about-card h2,
+.section-title {
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
-/* grid */
-.specs-grid {
+/* grids */
+.profile-info-grid,
+.profile-specs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-/* stat cards */
+.profile-info-item,
 .spec-item {
     background-color: #222;
     padding: 18px;
@@ -160,6 +137,7 @@
     border-radius: 6px;
 }
 
+.profile-info-item span,
 .spec-item span {
     display: block;
     font-size: 14px;
@@ -167,35 +145,72 @@
     margin-bottom: 6px;
 }
 
+.profile-info-item strong,
 .spec-item strong {
     font-size: 18px;
 }
 
-/* section */
-.specs-section {
-    margin-bottom: 40px;
+.profile-section {
+    margin-top: 10px;
+    position: relative;
 }
 
-.section-title {
-    font-size: 24px;
+/* header layout for about section */
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-/* responsive */
+/* container for both buttons */
+.about-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* edit button */
+.edit-box-btn {
+    background-color: #1a1a1a;
+    border: 2px solid #f4b400;
+    color: #f4b400;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.edit-box-btn:hover {
+    background-color: #f4b400;
+    color: #111;
+}
+
+/* change car button (slightly different tone for contrast) */
+.change-car-btn {
+    background-color: #1a1a1a;
+    border: 2px solid #f4b400;
+    color: #f4b400;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.change-car-btn:hover {
+    background-color: #f4b400;
+    color: #111;
+}
+
 @media (max-width: 900px) {
-    .specs-top-section {
+    .profile-top-section,
+    .profile-info-grid,
+    .profile-specs-grid {
         grid-template-columns: 1fr;
     }
 
-    .specs-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .specs-title {
+    .profile-name {
         font-size: 32px;
-    }
-
-    .lap-time-inline {
-        font-size: 28px;
     }
 }

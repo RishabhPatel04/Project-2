@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import API_URL from "../../api";
 import "./Vehicle.css";
 
+// brand list
 const brands = [
     "All Brands",
     "Alfa Romeo",
@@ -69,7 +70,6 @@ function Vehicle() {
 
     return (
         <div className="vehicle-wrapper">
-
             {/* navbar */}
             <div className="navbar">
                 <div className="logo-row">
@@ -83,8 +83,7 @@ function Vehicle() {
                 </div>
 
                 <div className="nav-links">
-                    <span>Saved</span>
-                    <span>Profile</span>
+                    <Link to="/profile">Profile</Link>
                     <button
                         className="logout-btn"
                         onClick={() => navigate("/")}
@@ -96,7 +95,7 @@ function Vehicle() {
 
             {/* header */}
             <div className="vehicle-header">
-                <p className="subtitle">Choose Your Vehicle</p>
+                <p className="page-label">Choose Your Vehicle</p>
 
                 <button
                     className="back-btn"
@@ -122,10 +121,8 @@ function Vehicle() {
 
             {/* main layout */}
             <div className="vehicle-content">
-
                 {/* brand sidebar */}
                 <div className="brand-section">
-
                     <h3 className="brand-title">Filter By Brand</h3>
 
                     <div className="brand-sidebar">
@@ -141,7 +138,6 @@ function Vehicle() {
                             </div>
                         ))}
                     </div>
-
                 </div>
 
                 {/* vehicle lap list */}
@@ -168,7 +164,6 @@ function Vehicle() {
                         </div>
                     ))}
                 </div>
-
             </div>
         </div>
     );
