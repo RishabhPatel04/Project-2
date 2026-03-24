@@ -1,0 +1,216 @@
+.profile-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 80px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+.dot {
+    color: #f4b400;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 1px solid #f4b400;
+    color: white;
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: #f4b400;
+    color: #111;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: #f4b400;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    opacity: 0.7;
+}
+
+/* header */
+.profile-header {
+    margin-bottom: 40px;
+}
+
+.profile-label {
+    color: #f4b400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.profile-name {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.profile-subtitle {
+    color: #f4b400;
+    font-size: 18px;
+}
+
+/* top section */
+.profile-top-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.profile-image-card {
+    background-color: #1a1a1a;
+    border-left: 4px solid #f4b400;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.profile-about-card {
+    background-color: #1a1a1a;
+    border-left: 4px solid #f4b400;
+    padding: 20px;
+    height: 85%;
+    border-radius: 12px;
+}
+
+.profile-car-image {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+.profile-about-card h2,
+.section-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* grids */
+.profile-info-grid,
+.profile-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profile-info-item,
+.spec-item {
+    background-color: #222;
+    padding: 18px;
+    border-left: 4px solid #f4b400;
+    border-radius: 6px;
+}
+
+.profile-info-item span,
+.spec-item span {
+    display: block;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
+
+.profile-info-item strong,
+.spec-item strong {
+    font-size: 18px;
+}
+
+.profile-section {
+    margin-top: 10px;
+    position: relative;
+}
+
+/* header layout for about section */
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* container for both buttons */
+.about-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* edit button */
+.edit-box-btn {
+    background-color: #1a1a1a;
+    border: 2px solid #f4b400;
+    color: #f4b400;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.edit-box-btn:hover {
+    background-color: #f4b400;
+    color: #111;
+}
+
+/* change car button (slightly different tone for contrast) */
+.change-car-btn {
+    background-color: #1a1a1a;
+    border: 2px solid #f4b400;
+    color: #f4b400;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.change-car-btn:hover {
+    background-color: #f4b400;
+    color: #111;
+}
+
+@media (max-width: 900px) {
+    .profile-top-section,
+    .profile-info-grid,
+    .profile-specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-name {
+        font-size: 32px;
+    }
+}
