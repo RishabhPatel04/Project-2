@@ -1,113 +1,113 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import API_URL from "../../api";
+import { Link, useNavigate } from "react-router-dom";
 import "./Specs.css";
+import trackImage from "../../assets/suzuka-map.png";
 
 function Specs() {
-    const { continentName, countryName, trackId, vehicleId } = useParams();
     const navigate = useNavigate();
 
-    const [vehicle, setVehicle] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetch(`${API_URL}/vehicles/${vehicleId}`)
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Vehicle not found");
-                }
-                return res.json();
-            })
-            .then((data) => {
-                console.log("Vehicle data:", data); // Debug
-                setVehicle(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Error fetching vehicle:", err);
-                setError("Failed to load vehicle specs.");
-                setLoading(false);
-            });
-    }, [vehicleId]);
-
-    if (loading) {
-        return <div className="specs-loading">Loading vehicle specs...</div>;
-    }
-
-    if (error) {
-        return <div className="specs-error">{error}</div>;
-    }
+    const lapDetails = {
+        car: "Ferrari SF90",
+        driver: "Charles Leclerc",
+        lapTime: "1:27.25",
+        trackName: "Suzuka Circuit",
+        country: "Japan",
+        engine: "4.0L twin-turbo V8 hybrid",
+        horsepower: "986 hp",
+        transmission: "8-speed automatic",
+        drivetrain: "AWD",
+        topSpeed: "211 mph",
+    };
 
     return (
         <div className="specs-wrapper">
-            {/* Navbar */}
-            <div className="specs-navbar">
+            {/* navbar */}
+            <div className="navbar">
                 <div className="logo">
                     MotoRYX<span className="dot">.</span>
                 </div>
 
-                <button
-                    className="back-btn"
-                    onClick={() =>
-                        navigate(
-                            `/continents/${continentName}/${countryName}/${trackId}`
-                        )
-                    }
-                >
-                    ← Return to Vehicles
-                </button>
+                <div className="nav-links">
+                    <button
+                        className="back-btn"
+                        onClick={() => navigate(-1)}
+                    >
+                        ← Back To Vehicles
+                    </button>
+                    <Link to="/profile">Profile</Link>
+                    <button
+                        className="logout-btn"
+                        onClick={() => navigate(-1)}
+                    >
+                        Log Out
+                    </button>
+                </div>
             </div>
 
-            {/* Vehicle Header */}
+            {/* header */}
             <div className="specs-header">
-                <h1 className="vehicle-title">
-                    {vehicle.name || "Unknown Vehicle"}
-                </h1>
-
-                <p className="vehicle-subtitle">
-                    {vehicle.year || "—"} • {vehicle.country || "—"}
+                <p className="specs-label">Track Lap Details</p>
+                <h1 className="specs-title">{lapDetails.car}</h1>
+                <h2 className="lap-time-inline">{lapDetails.lapTime}</h2>
+                <p className="specs-subtitle">
+                    {lapDetails.driver} • {lapDetails.trackName}
                 </p>
             </div>
 
-            {/* Specs Grid */}
-            <div className="specs-grid">
-                <div className="spec-item">
-                    <span>Engine Type</span>
-                    <strong>{vehicle.engineType ?? "N/A"}</strong>
-                </div>
-
-                <div className="spec-item">
-                    <span>Displacement</span>
-                    <strong>{vehicle.displacement ?? "N/A"}</strong>
-                </div>
-
-                <div className="spec-item">
-                    <span>Power</span>
-                    <strong>{vehicle.power ?? "N/A"}</strong>
-                </div>
-
-                <div className="spec-item">
-                    <span>Torque</span>
-                    <strong>{vehicle.torque ?? "N/A"}</strong>
-                </div>
-
-                <div className="spec-item">
-                    <span>Power / Weight</span>
-                    <strong>{vehicle.powerWeight ?? "N/A"}</strong>
-                </div>
-            </div>
-
-            {/* Optional Image Section */}
-            {vehicle.imageUrl && (
-                <div className="specs-image-container">
+            {/* top section */}
+            <div className="specs-top-section">
+                <div className="specs-image-card">
                     <img
-                        src={vehicle.imageUrl}
-                        alt={vehicle.name}
-                        className="vehicle-image"
+                        src={trackImage}
+                        alt={lapDetails.trackName}
+                        className="specs-track-image"
                     />
                 </div>
-            )}
+
+                <div className="specs-info-card">
+                    <h2>Car Specs</h2>
+                    <div className="specs-grid">
+                        <div className="spec-item">
+                            <span>Driver</span>
+                            <strong>{lapDetails.driver}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Track</span>
+                            <strong>{lapDetails.trackName}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Country</span>
+                            <strong>{lapDetails.country}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Engine</span>
+                            <strong>{lapDetails.engine}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Horsepower</span>
+                            <strong>{lapDetails.horsepower}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Transmission</span>
+                            <strong>{lapDetails.transmission}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Drivetrain</span>
+                            <strong>{lapDetails.drivetrain}</strong>
+                        </div>
+
+                        <div className="spec-item">
+                            <span>Top Speed</span>
+                            <strong>{lapDetails.topSpeed}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
