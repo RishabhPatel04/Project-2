@@ -28,8 +28,6 @@ function Continent() {
     const [continents, setContinents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-<<<<<<< Updated upstream
-=======
     const [isAdmin, setIsAdmin] = useState(false);
 
     // Check if current user is an admin via /auth/me endpoint.
@@ -39,7 +37,6 @@ function Continent() {
             .then((data) => { if (data?.role === "ADMIN") setIsAdmin(true); })
             .catch(() => {});
     }, []);
->>>>>>> Stashed changes
 
     // load continents when page opens
     useEffect(() => {
