@@ -165,6 +165,7 @@ public class AuthController {
     /**
      * Logs out the current user by invalidating the session.
      *
+     * 
      * @param session the HTTP session
      * @return a success message
      */
