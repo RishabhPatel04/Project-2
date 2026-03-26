@@ -7,6 +7,7 @@ import Track from "./components/Track/Track";
 import Vehicle from "./components/Vehicle/Vehicle";
 import Specs from "./components/Specs/Specs";
 import Profile from "./components/Profile/Profile";
+import Admin from "./components/Admin/Admin";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
 
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/admin" element={<Admin/>} />
                 <Route path="/continents" element={<Continent />} />
                 <Route path="/continents/:continentName" element={<Country />} />
                 <Route path="/continents/:continentName/:countryName/:trackId/vehicle/:vehicleId" element={<Specs />} />
