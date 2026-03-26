@@ -133,20 +133,29 @@ public class AuthController {
     public ResponseEntity<?> me(@AuthenticationPrincipal OAuth2User oauthUser, HttpSession session) {
         // OAuth2 user (Google login)
         if (oauthUser != null) {
+            String email = oauthUser.getAttribute("email");
+            String role = userRepo.findByEmail(email)
+                    .map(AppUser::getRole)
+                    .orElse("USER");
             return ResponseEntity.ok(Map.of(
                     "name", oauthUser.getAttribute("name"),
-                    "email", oauthUser.getAttribute("email"),
-                    "picture", oauthUser.getAttribute("picture")
+                    "email", email,
+                    "picture", oauthUser.getAttribute("picture"),
+                    "role", role
             ));
         }
 
         // Local user (session-based login)
         String username = (String) session.getAttribute("username");
         if (username != null) {
+            String role = userRepo.findByUsername(username)
+                    .map(AppUser::getRole)
+                    .orElse("USER");
             return ResponseEntity.ok(Map.of(
                     "name", username,
                     "email", session.getAttribute("email"),
-                    "picture", ""
+                    "picture", "",
+                    "role", role
             ));
         }
 
@@ -156,6 +165,7 @@ public class AuthController {
     /**
      * Logs out the current user by invalidating the session.
      *
+     * 
      * @param session the HTTP session
      * @return a success message
      */
