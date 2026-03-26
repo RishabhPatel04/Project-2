@@ -111,3 +111,25 @@
     transform: translateY(-3px);
     background-color: #1e1e1e;
 }
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+ 
+.admin-link {
+    color: #f4b400 !important;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(244, 180, 0, 0.4);
+    padding: 5px 12px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+ 
+.admin-link:hover {
+    background: rgba(244, 180, 0, 0.1);
+}
